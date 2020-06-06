@@ -33,10 +33,6 @@ class Solver:
 
             if self.solve(self.board, x + 1, y, final):
                 return True
-            if self.solve(self.board, x - 1, y, final):
-                return True
-            if self.solve(self.board, x, y - 1, final):
-                return True
 
             self.board[x][y] = 5
             return False
