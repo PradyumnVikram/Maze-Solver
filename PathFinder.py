@@ -9,9 +9,9 @@ class Solver:
             for j in i:
                 print(j, end=' ')
 
-    def solve_maze(self):
+    def solve_maze(self, final, start):
         count = 0
-        if not self.solve(self.board, 0, 0):
+        if not self.solve(self.board, start[0],start[1], final):
             return False
         return self.board
 
@@ -20,21 +20,25 @@ class Solver:
             return True
         return False
 
-    def solve(self, board, x, y):
-        if x == self.n_size - 1 and y == self.n_size - 1 and self.board[x][y] == 1:
+    def solve(self, board, x, y, final):
+        if x == final[0] and y == final[1] and self.board[x][y] == 4:
             self.board[x][y] = 2
             return True
 
         if self.isValid(x, y):
             self.board[x][y] = 2
 
-            if self.solve(self.board, x, y + 1):
+            if self.solve(self.board, x, y + 1, final):
                 return True
 
-            if self.solve(self.board, x + 1, y):
+            if self.solve(self.board, x + 1, y, final):
+                return True
+            if self.solve(self.board, x - 1, y, final):
+                return True
+            if self.solve(self.board, x, y - 1, final):
                 return True
 
-            self.board[x][y] = 0
+            self.board[x][y] = 5
             return False
 
 
