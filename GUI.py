@@ -16,7 +16,7 @@ WIDTH = 6
 HEIGHT = 6
 win_size = (403, 403)
 
-pygame.display.set_caption('MAZE SOLVER')
+pygame.display.set_caption('Maze Solver')
 win = pygame.display.set_mode(win_size)
 MARGIN = 2
 
